@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Examples</string>
+    <string name="example1_title">Zipping requests</string>
+    <string name="example1_subtitle">Zipping two request from different sources through one single use case.</string>
+</resources>

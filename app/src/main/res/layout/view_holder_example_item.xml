@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="8dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        style="@style/Examples.TextAppearance.Title"
+        tools:text="Really long title title title title title title title title title title title title"
+        android:id="@+id/viewHolderExampleTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:paddingTop="8dp"
+        style="@style/Examples.TextAppearance.Description"
+        tools:text="Really long description description description description description description description description"
+        android:id="@+id/viewHolderExampleDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

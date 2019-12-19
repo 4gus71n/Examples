@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kimboo.example1">
+
+    <application>
+        <activity android:name=".ui.Example1Activity"
+            android:launchMode="singleTop" />
+    </application>
+
+</manifest>

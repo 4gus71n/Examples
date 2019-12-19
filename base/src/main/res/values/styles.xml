@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Examples.TextAppearance.Title" parent="TextAppearance.AppCompat.Large">
+    </style>
+    <style name="Examples.TextAppearance.Description" parent="TextAppearance.AppCompat.Medium">
+    </style>
+    <style name="Examples.TextAppearance.Item" parent="TextAppearance.AppCompat.Small">
+    </style>
+
+    <style name="Examples.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>
