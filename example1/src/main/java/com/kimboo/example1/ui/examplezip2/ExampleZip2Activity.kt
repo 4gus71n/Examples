@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.appbar.AppBarLayout
 import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
 import com.kimboo.example1.di.component.Example1ViewInjector
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_example_2.*
 import kotlinx.android.synthetic.main.activity_example_2_business.*
 import kotlinx.android.synthetic.main.activity_example_2_profile.*
 import javax.inject.Inject
+import kotlin.math.abs
 
 class ExampleZip2Activity : AppCompatActivity() {
 
@@ -34,6 +36,8 @@ class ExampleZip2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_example_2)
 
         setupSwipeToRefreshLayout()
+        setupParallaxFadeOut()
+        setupToolbar()
 
         viewInjector.inject(this)
 
@@ -45,6 +49,20 @@ class ExampleZip2Activity : AppCompatActivity() {
         observeMessageChanges()
 
         viewModelZip.fetchProfile()
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(activityExample2Toolbar)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupParallaxFadeOut() {
+        activityExample2AppbarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            activityExample2DescriptionContainer.alpha = 1 - abs(
+                verticalOffset.toFloat() / appBarLayout.totalScrollRange
+            )
+        })
     }
 
     /**
