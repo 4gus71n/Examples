@@ -2,4 +2,6 @@
     <string name="app_name">Examples</string>
     <string name="example1_title">Zipping requests</string>
     <string name="example1_subtitle">Zipping two request from different sources through one single use case.</string>
+    <string name="example2_title">More zipping</string>
+    <string name="example2_subtitle">Another example about zipping requests together</string>
 </resources>

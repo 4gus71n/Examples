@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:id="@+id/activityExample2BusinessContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:showIn="@layout/activity_example_2">
@@ -18,8 +19,9 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginEnd="4dp"
             android:text="Career:"
-            style="@style/Examples.TextAppearance.Title"
+            style="@style/Examples.TextAppearance.Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -37,8 +39,9 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginEnd="4dp"
             android:text="Years of experience:"
-            style="@style/Examples.TextAppearance.Title"
+            style="@style/Examples.TextAppearance.Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -56,8 +59,9 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginEnd="4dp"
             android:text="Languages:"
-            style="@style/Examples.TextAppearance.Title"
+            style="@style/Examples.TextAppearance.Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

@@ -26,6 +26,7 @@ dependencies {
     implementation project(":base")
     implementation project(":core")
     implementation project(":example1")
+    implementation project(":example2")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

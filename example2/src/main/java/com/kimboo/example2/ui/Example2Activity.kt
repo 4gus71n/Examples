@@ -1,10 +1,10 @@
 package com.kimboo.example2.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.kimboo.example1.ui.viewmodel.Example1ViewModel
 import com.kimboo.example2.R
 import com.kimboo.example2.di.component.DaggerExample2ViewInjector
 import com.kimboo.example2.di.component.Example2ViewInjector
@@ -14,6 +14,8 @@ import com.kimboo.models.ProfileInformation
 import com.kimboo.utils.MyViewModelFactory
 import com.kimboo.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_2.*
+import kotlinx.android.synthetic.main.activity_example_2_business.*
+import kotlinx.android.synthetic.main.activity_example_2_profile.*
 import javax.inject.Inject
 
 class Example2Activity : AppCompatActivity() {
@@ -115,18 +117,25 @@ class Example2Activity : AppCompatActivity() {
     }
 
     private fun onHideProfileSection() {
-
+        activityExample2ProfileContainer.visibility = View.GONE
     }
 
     private fun onHideBusinessSection() {
-
+        activityExample2BusinessContainer.visibility = View.GONE
     }
 
     private fun onShowProfileInformation(profile: ProfileInformation) {
-
+        activityExample2ProfileContainer.visibility = View.VISIBLE
+        activityExample2FullNameTextView.text = "${profile.firsName} ${profile.lastName}"
+        activityExample2EmailTextView.text = profile.email
     }
 
     private fun onShowBusinessSkillsInformation(businessSkills: BusinessSkills) {
-
+        activityExample2BusinessContainer.visibility = View.VISIBLE
+        activityExample2CareerTextView.text = businessSkills.career
+        activityExample2YearsTextView.text = businessSkills.yearsExperience.toString()
+        activityExample2LanguagesTextView.text = businessSkills.languages.joinToString(
+            separator = ", "
+        )
     }
 }

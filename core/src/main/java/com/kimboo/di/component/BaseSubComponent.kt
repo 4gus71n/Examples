@@ -1,6 +1,7 @@
 package com.kimboo.di.component
 
 import com.kimboo.interactors.GetNewsInteractor
+import com.kimboo.interactors.GetProfileInteractor
 import dagger.Subcomponent
 
 /**
@@ -11,6 +12,7 @@ import dagger.Subcomponent
 @Subcomponent
 interface BaseSubComponent {
     val getNewsInteractor: GetNewsInteractor
+    val getProfileInteractor: GetProfileInteractor
 
     @Subcomponent.Builder
     interface Builder {

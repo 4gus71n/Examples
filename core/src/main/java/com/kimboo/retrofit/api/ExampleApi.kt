@@ -1,6 +1,8 @@
 package com.kimboo.retrofit.api
 
+import com.kimboo.retrofit.responses.ApiBusinessSkilssResponse
 import com.kimboo.retrofit.responses.ApiNewFeedListResponse
+import com.kimboo.retrofit.responses.ApiProfileResponse
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,4 +19,10 @@ interface ExampleApi {
 
     @GET("news/recent")
     fun fetchRecentlyViewedNews(): Single<Response<ApiNewFeedListResponse>>
+
+    @GET("profile")
+    fun fetchProfileInfo(): Single<Response<ApiProfileResponse>>
+
+    @GET("business")
+    fun fetchBusinessSkills(): Single<Response<ApiBusinessSkilssResponse>>
 }
