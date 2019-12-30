@@ -1,23 +1,18 @@
-package com.kimboo.example1.ui
+package com.kimboo.example1.ui.examplezip1
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.snackbar.Snackbar
-import com.kimboo.ExampleApplication
 import com.kimboo.base.utils.PaginatedScrollListener
-import com.kimboo.di.component.BaseSubComponent
 import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
 import com.kimboo.example1.di.component.Example1ViewInjector
-import com.kimboo.example1.ui.adapter.NewsAdapter
-import com.kimboo.example1.ui.viewmodel.Example1ViewModel
+import com.kimboo.example1.ui.examplezip1.adapter.NewsAdapter
+import com.kimboo.example1.ui.examplezip1.viewmodel.Example1ViewModel
 import com.kimboo.utils.MyViewModelFactory
 import com.kimboo.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_1.*
-import java.lang.RuntimeException
 import javax.inject.Inject
 
 class Example1Activity : AppCompatActivity() {

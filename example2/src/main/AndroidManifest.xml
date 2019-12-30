@@ -2,8 +2,7 @@
     package="com.kimboo.example2">
 
     <application>
-        <activity android:name=".ui.Example2Activity"
-            android:launchMode="singleTop" />
+
     </application>
 
 </manifest>

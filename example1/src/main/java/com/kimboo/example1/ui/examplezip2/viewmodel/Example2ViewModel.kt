@@ -1,4 +1,4 @@
-package com.kimboo.example2.ui.viewmodel
+package com.kimboo.example1.ui.examplezip2.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,13 +40,17 @@ class Example2ViewModel @Inject constructor(
         isLoading.value = false
 
         state.value = if (profile != null) {
-            State.ShowProfileInformation(profile)
+            State.ShowProfileInformation(
+                profile
+            )
         } else {
             State.HideProfile
         }
 
         state.value = if (businessSkills != null) {
-            State.ShowBusinessSkillsInformation(businessSkills)
+            State.ShowBusinessSkillsInformation(
+                businessSkills
+            )
         } else {
             State.HideBusiness
         }
@@ -54,12 +58,14 @@ class Example2ViewModel @Inject constructor(
 
     override fun onErrorFetchingProfile() {
         isLoading.value = false
-        state.value = State.HideProfile
+        state.value =
+            State.HideProfile
     }
 
     override fun onErrorFetchingBusinessSkills() {
         isLoading.value = false
-        state.value = State.HideBusiness
+        state.value =
+            State.HideBusiness
     }
     // endregion
 

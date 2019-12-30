@@ -1,14 +1,14 @@
-package com.kimboo.example2.ui
+package com.kimboo.example1.ui.examplezip2
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.kimboo.example2.R
-import com.kimboo.example2.di.component.DaggerExample2ViewInjector
-import com.kimboo.example2.di.component.Example2ViewInjector
-import com.kimboo.example2.ui.viewmodel.Example2ViewModel
+import com.kimboo.example1.R
+import com.kimboo.example1.di.component.DaggerExample1ViewInjector
+import com.kimboo.example1.di.component.Example1ViewInjector
+import com.kimboo.example1.ui.examplezip2.viewmodel.Example2ViewModel
 import com.kimboo.models.BusinessSkills
 import com.kimboo.models.ProfileInformation
 import com.kimboo.utils.MyViewModelFactory
@@ -24,8 +24,8 @@ class Example2Activity : AppCompatActivity() {
     lateinit var viewModelProvider: MyViewModelFactory
     lateinit var viewModel: Example2ViewModel
 
-    private val viewInjector: Example2ViewInjector
-         get() = DaggerExample2ViewInjector.builder()
+    private val viewInjector: Example1ViewInjector
+         get() = DaggerExample1ViewInjector.builder()
              .baseSubComponent(getBaseSubComponent())
              .build()
 
