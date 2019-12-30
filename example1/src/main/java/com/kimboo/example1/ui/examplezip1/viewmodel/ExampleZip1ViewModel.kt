@@ -1,4 +1,4 @@
-package com.kimboo.example1.ui.viewmodel
+package com.kimboo.example1.ui.examplezip1.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import com.kimboo.interactors.GetNewsInteractor
 import com.kimboo.models.NewFeed
 import javax.inject.Inject
 
-class Example1ViewModel @Inject constructor(
+class ExampleZip1ViewModel @Inject constructor(
     private val getNewsInteractor: GetNewsInteractor
 ) : ViewModel(), GetNewsInteractor.Callback {
 
@@ -33,22 +33,25 @@ class Example1ViewModel @Inject constructor(
     override fun onNewsSuccessfullyFetched(news: List<NewFeed>, currentPage: Int, totalPages: Int) {
         isLoading.value = false
 
-        state.value = State.NewsFetched(
-            news = news
-        )
+        state.value =
+            State.NewsFetched(
+                news = news
+            )
 
-        pagination.value = Pagination(
-            currentPage = currentPage,
-            totalPages = totalPages
-        )
+        pagination.value =
+            Pagination(
+                currentPage = currentPage,
+                totalPages = totalPages
+            )
     }
 
     override fun onRecentlyViewedNewsFetched(news: List<NewFeed>) {
         isLoading.value = false
 
-        state.value = State.RecentlyViewedNewsFetched(
-            news = news
-        )
+        state.value =
+            State.RecentlyViewedNewsFetched(
+                news = news
+            )
     }
 
     override fun onErrorFetchingNews() {

@@ -2,7 +2,9 @@
     package="com.kimboo.example1">
 
     <application>
-        <activity android:name=".ui.Example1Activity"
+        <activity android:name=".ui.examplezip1.ExampleZip1Activity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.examplezip2.ExampleZip2Activity"
             android:launchMode="singleTop" />
     </application>
 

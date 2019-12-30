@@ -1,4 +1,4 @@
-package com.kimboo.example1.ui.adapter
+package com.kimboo.example1.ui.examplezip1.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
