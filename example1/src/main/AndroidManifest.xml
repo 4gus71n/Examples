@@ -3,8 +3,10 @@
 
     <application>
         <activity android:name=".ui.examplezip1.ExampleZip1Activity"
+            android:parentActivityName="com.kimboo.examples.ui.MainActivity"
             android:launchMode="singleTop" />
         <activity android:name=".ui.examplezip2.ExampleZip2Activity"
+            android:parentActivityName="com.kimboo.examples.ui.MainActivity"
             android:launchMode="singleTop" />
     </application>
 

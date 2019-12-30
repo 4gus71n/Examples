@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.appbar.AppBarLayout
 import com.kimboo.base.utils.PaginatedScrollListener
 import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
@@ -14,6 +15,7 @@ import com.kimboo.utils.MyViewModelFactory
 import com.kimboo.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_1.*
 import javax.inject.Inject
+import kotlin.math.abs
 
 class ExampleZip1Activity : AppCompatActivity() {
 
@@ -39,6 +41,8 @@ class ExampleZip1Activity : AppCompatActivity() {
 
         setupRecyclerView()
         setupSwipeRefreshLayoutView()
+        setupParallaxFadeOut()
+        setupToolbar()
 
         viewInjector.inject(this)
 
@@ -50,6 +54,20 @@ class ExampleZip1Activity : AppCompatActivity() {
         obserPaginationChanges()
 
         fetchNews()
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(activityExample1Toolbar)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupParallaxFadeOut() {
+        activityExample1AppbarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            activityExample1DescriptionContainer.alpha = 1 - abs(
+                verticalOffset.toFloat() / appBarLayout.totalScrollRange
+            )
+        })
     }
 
     private fun setupSwipeRefreshLayoutView() {
