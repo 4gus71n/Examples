@@ -7,7 +7,7 @@ import com.kimboo.models.BusinessSkills
 import com.kimboo.models.ProfileInformation
 import javax.inject.Inject
 
-class Example2ViewModel @Inject constructor(
+class ExampleZip2ViewModel @Inject constructor(
     private val getProfileInteractor: GetProfileInteractor
 ) : ViewModel(), GetProfileInteractor.Callback {
 

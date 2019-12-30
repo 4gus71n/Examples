@@ -9,17 +9,17 @@ import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
 import com.kimboo.example1.di.component.Example1ViewInjector
 import com.kimboo.example1.ui.examplezip1.adapter.NewsAdapter
-import com.kimboo.example1.ui.examplezip1.viewmodel.Example1ViewModel
+import com.kimboo.example1.ui.examplezip1.viewmodel.ExampleZip1ViewModel
 import com.kimboo.utils.MyViewModelFactory
 import com.kimboo.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_1.*
 import javax.inject.Inject
 
-class Example1Activity : AppCompatActivity() {
+class ExampleZip1Activity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelProvider: MyViewModelFactory
-    lateinit var viewModel: Example1ViewModel
+    lateinit var viewModelZip: ExampleZip1ViewModel
 
     private val viewInjector: Example1ViewInjector
          get() = DaggerExample1ViewInjector.builder()
@@ -29,7 +29,7 @@ class Example1Activity : AppCompatActivity() {
     private val newsAdapter = NewsAdapter(this)
     private val paginatedScrollListener = object : PaginatedScrollListener() {
         override fun onLoadNextPage(page: Int) {
-            viewModel.fetchNews(page)
+            viewModelZip.fetchNews(page)
         }
     }
 
@@ -42,8 +42,8 @@ class Example1Activity : AppCompatActivity() {
 
         viewInjector.inject(this)
 
-        viewModel = ViewModelProviders.of(this, viewModelProvider)
-            .get(Example1ViewModel::class.java)
+        viewModelZip = ViewModelProviders.of(this, viewModelProvider)
+            .get(ExampleZip1ViewModel::class.java)
 
         observeStateChanges()
         obserLoadingState()
@@ -64,32 +64,32 @@ class Example1Activity : AppCompatActivity() {
     }
 
     private fun obserPaginationChanges() {
-        viewModel.pagination.observe(this, Observer {
+        viewModelZip.pagination.observe(this, Observer {
             paginatedScrollListener.currentPage = it.currentPage
             paginatedScrollListener.isLastPage = it.currentPage == it.totalPages
         })
     }
 
     private fun obserLoadingState() {
-        viewModel.isLoading.observe(this, Observer {
+        viewModelZip.isLoading.observe(this, Observer {
             activityExample1SwipeRefreshLayout.isRefreshing = it
             paginatedScrollListener.isLoading = it
         })
     }
 
     private fun observeStateChanges() {
-        viewModel.state.observe(this, Observer {
+        viewModelZip.state.observe(this, Observer {
             when (it) {
-                is Example1ViewModel.State.NewsFetched -> {
+                is ExampleZip1ViewModel.State.NewsFetched -> {
                     newsAdapter.news.addAll(it.news)
                     newsAdapter.notifyDataSetChanged()
                 }
-                is Example1ViewModel.State.RecentlyViewedNewsFetched -> {
+                is ExampleZip1ViewModel.State.RecentlyViewedNewsFetched -> {
                     newsAdapter.recentlyViewedNews.clear()
                     newsAdapter.recentlyViewedNews.addAll(it.news)
                     newsAdapter.notifyDataSetChanged()
                 }
-                is Example1ViewModel.State.Error -> {
+                is ExampleZip1ViewModel.State.Error -> {
                     // TODO
                 }
             }
@@ -97,6 +97,6 @@ class Example1Activity : AppCompatActivity() {
     }
 
     private fun fetchNews(page: Int = 0) {
-        viewModel.fetchNews(page)
+        viewModelZip.fetchNews(page)
     }
 }

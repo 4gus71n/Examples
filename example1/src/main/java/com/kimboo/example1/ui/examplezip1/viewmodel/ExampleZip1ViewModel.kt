@@ -6,7 +6,7 @@ import com.kimboo.interactors.GetNewsInteractor
 import com.kimboo.models.NewFeed
 import javax.inject.Inject
 
-class Example1ViewModel @Inject constructor(
+class ExampleZip1ViewModel @Inject constructor(
     private val getNewsInteractor: GetNewsInteractor
 ) : ViewModel(), GetNewsInteractor.Callback {
 

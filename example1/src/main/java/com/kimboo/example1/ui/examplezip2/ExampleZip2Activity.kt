@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
 import com.kimboo.example1.di.component.Example1ViewInjector
-import com.kimboo.example1.ui.examplezip2.viewmodel.Example2ViewModel
+import com.kimboo.example1.ui.examplezip2.viewmodel.ExampleZip2ViewModel
 import com.kimboo.models.BusinessSkills
 import com.kimboo.models.ProfileInformation
 import com.kimboo.utils.MyViewModelFactory
@@ -18,11 +18,11 @@ import kotlinx.android.synthetic.main.activity_example_2_business.*
 import kotlinx.android.synthetic.main.activity_example_2_profile.*
 import javax.inject.Inject
 
-class Example2Activity : AppCompatActivity() {
+class ExampleZip2Activity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelProvider: MyViewModelFactory
-    lateinit var viewModel: Example2ViewModel
+    lateinit var viewModelZip: ExampleZip2ViewModel
 
     private val viewInjector: Example1ViewInjector
          get() = DaggerExample1ViewInjector.builder()
@@ -37,29 +37,29 @@ class Example2Activity : AppCompatActivity() {
 
         viewInjector.inject(this)
 
-        viewModel = ViewModelProviders.of(this, viewModelProvider)
-            .get(Example2ViewModel::class.java)
+        viewModelZip = ViewModelProviders.of(this, viewModelProvider)
+            .get(ExampleZip2ViewModel::class.java)
 
         observeStateChanges()
         observeLoadingChanges()
         observeMessageChanges()
 
-        viewModel.fetchProfile()
+        viewModelZip.fetchProfile()
     }
 
     /**
      * Observes the message changes from the ViewModel.
      */
     private fun observeMessageChanges() {
-        viewModel.message.observe(this, Observer {
+        viewModelZip.message.observe(this, Observer {
             when (it) {
-                is Example2ViewModel.StateMessage.NoInternetConnection -> {
+                is ExampleZip2ViewModel.StateMessage.NoInternetConnection -> {
                     onShowNoInternetConnectionSnackbar()
                 }
-                is Example2ViewModel.StateMessage.UnauthorizedError -> {
+                is ExampleZip2ViewModel.StateMessage.UnauthorizedError -> {
                     onShowUnauthorizedErrorSnackbar()
                 }
-                is Example2ViewModel.StateMessage.UnknownError -> {
+                is ExampleZip2ViewModel.StateMessage.UnknownError -> {
                     onShowUnknownErrorSnackbar()
                 }
             }
@@ -71,7 +71,7 @@ class Example2Activity : AppCompatActivity() {
      * ProgressBar or not.
      */
     private fun observeLoadingChanges() {
-        viewModel.isLoading.observe(this, Observer {
+        viewModelZip.isLoading.observe(this, Observer {
             activityExample2SwipeRefreshLayout.isRefreshing = it
         })
     }
@@ -80,18 +80,18 @@ class Example2Activity : AppCompatActivity() {
      * Observes the state of the results in the ViewModel.
      */
     private fun observeStateChanges() {
-        viewModel.state.observe(this, Observer {
+        viewModelZip.state.observe(this, Observer {
             when (it) {
-                is Example2ViewModel.State.ShowBusinessSkillsInformation -> {
+                is ExampleZip2ViewModel.State.ShowBusinessSkillsInformation -> {
                     onShowBusinessSkillsInformation(it.businessSkills)
                 }
-                is Example2ViewModel.State.ShowProfileInformation -> {
+                is ExampleZip2ViewModel.State.ShowProfileInformation -> {
                     onShowProfileInformation(it.profile)
                 }
-                is Example2ViewModel.State.HideBusiness -> {
+                is ExampleZip2ViewModel.State.HideBusiness -> {
                     onHideBusinessSection()
                 }
-                is Example2ViewModel.State.HideProfile -> {
+                is ExampleZip2ViewModel.State.HideProfile -> {
                     onHideProfileSection()
                 }
             }
@@ -100,7 +100,7 @@ class Example2Activity : AppCompatActivity() {
 
     private fun setupSwipeToRefreshLayout() {
         activityExample2SwipeRefreshLayout.setOnRefreshListener {
-            viewModel.fetchProfile()
+            viewModelZip.fetchProfile()
         }
     }
 
