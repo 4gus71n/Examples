@@ -4,6 +4,7 @@ import android.app.Application
 import com.kimboo.di.component.AppComponent
 import com.kimboo.di.component.DaggerAppComponent
 import com.kimboo.di.modules.*
+import com.kimboo.room.ExampleRoomDatabase
 
 class ExampleApplication : Application() {
     lateinit var appComponent: AppComponent
@@ -20,8 +21,11 @@ class ExampleApplication : Application() {
             .networkModule(onBuildNetworkModule())
             .repositoryModule(onBuildRepositoryModule())
             .retrofitModule(onBuildRetrofitModule())
+            .roomModule(onBuildRoomModule())
             .build()
     }
+
+    private fun onBuildRoomModule() = RoomModule()
 
     private fun onBuildRetrofitModule() = RetrofitModule()
 
