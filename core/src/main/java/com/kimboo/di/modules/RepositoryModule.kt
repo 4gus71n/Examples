@@ -41,8 +41,8 @@ class RepositoryModule {
         @Named("uiScheduler") uiScheduler: Scheduler,
         @Named("backgroundScheduler") backgroundScheduler: Scheduler,
         exampleApi: ExampleApi
-    ) : RecepiesNetworkRepository {
-        return RecepiesNetworkRepositoryImpl(
+    ) : RecipesNetworkRepository {
+        return RecipesNetworkRepositoryImpl(
             uiScheduler = uiScheduler,
             backgroundScheduler = backgroundScheduler,
             retrofitApi = exampleApi

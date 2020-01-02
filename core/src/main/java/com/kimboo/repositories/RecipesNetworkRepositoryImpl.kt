@@ -7,11 +7,11 @@ import com.kimboo.utils.toDataResponse
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 
-class RecepiesNetworkRepositoryImpl(
+class RecipesNetworkRepositoryImpl(
     private val retrofitApi: ExampleApi,
     private val uiScheduler: Scheduler,
     private val backgroundScheduler: Scheduler
-) : RecepiesNetworkRepository {
+) : RecipesNetworkRepository {
     override fun fetchRecepies(): Observable<DataResponse<List<ApiRecipeResponse>>> {
         return retrofitApi.fetchAllRecipes()
             .toDataResponse()
