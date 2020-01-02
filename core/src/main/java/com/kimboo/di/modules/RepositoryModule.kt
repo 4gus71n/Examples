@@ -2,6 +2,7 @@ package com.kimboo.di.modules
 
 import com.kimboo.repositories.*
 import com.kimboo.retrofit.api.ExampleApi
+import com.kimboo.room.dao.RecipesDao
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -45,6 +46,19 @@ class RepositoryModule {
             uiScheduler = uiScheduler,
             backgroundScheduler = backgroundScheduler,
             retrofitApi = exampleApi
+        )
+    }
+
+    @Provides
+    fun provideRecepiesCacheRepository(
+        @Named("uiScheduler") uiScheduler: Scheduler,
+        @Named("backgroundScheduler") backgroundScheduler: Scheduler,
+        recipesDao: RecipesDao
+    ) : RecepiesCacheRepository {
+        return RecepiesCacheRepositoryImpl(
+            uiScheduler = uiScheduler,
+            backgroundScheduler = backgroundScheduler,
+            recepiesDao = recipesDao
         )
     }
 }
