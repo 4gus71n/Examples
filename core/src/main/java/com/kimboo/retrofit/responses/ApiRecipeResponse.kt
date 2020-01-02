@@ -2,7 +2,7 @@ package com.kimboo.retrofit.responses
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiRecepieResponse(
+data class ApiRecipeResponse(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

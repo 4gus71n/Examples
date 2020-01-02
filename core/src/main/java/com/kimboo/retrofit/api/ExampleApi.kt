@@ -3,7 +3,7 @@ package com.kimboo.retrofit.api
 import com.kimboo.retrofit.responses.ApiBusinessSkilssResponse
 import com.kimboo.retrofit.responses.ApiNewFeedListResponse
 import com.kimboo.retrofit.responses.ApiProfileResponse
-import com.kimboo.retrofit.responses.ApiRecepieResponse
+import com.kimboo.retrofit.responses.ApiRecipeResponse
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
@@ -28,5 +28,5 @@ interface ExampleApi {
     fun fetchBusinessSkills(): Single<Response<ApiBusinessSkilssResponse>>
 
     @GET("recipes")
-    fun fetchAllRecipes(): Single<Response<List<ApiRecepieResponse>>>
+    fun fetchAllRecipes(): Single<Response<List<ApiRecipeResponse>>>
 }

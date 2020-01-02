@@ -3,10 +3,10 @@ package com.kimboo.room
 import android.content.Context
 import androidx.room.*
 import com.kimboo.room.dao.RecipesDao
-import com.kimboo.room.dto.DbRecipesDto
+import com.kimboo.room.dto.DbRecepieDto
 
 @Database(
-    entities = [DbRecipesDto::class],
+    entities = [DbRecepieDto::class],
     version = 1,
     exportSchema = false
 )

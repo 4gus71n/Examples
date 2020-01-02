@@ -3,13 +3,13 @@ package com.kimboo.room.dto
 import androidx.room.*
 
 @Entity(
-    tableName = "db_recipes_dto",
+    tableName = "db_recepie_dto",
     indices = [Index(
         value = ["id"],
         unique = true
     )]
 )
-data class DbRecipesDto(
+data class DbRecepieDto(
     @PrimaryKey
     val id: Int,
     val name: String,
