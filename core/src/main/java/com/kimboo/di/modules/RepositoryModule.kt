@@ -1,9 +1,6 @@
 package com.kimboo.di.modules
 
-import com.kimboo.repositories.NewsNetworkRepository
-import com.kimboo.repositories.NewsRepository
-import com.kimboo.repositories.ProfileNetworkRepository
-import com.kimboo.repositories.ProfileRepository
+import com.kimboo.repositories.*
 import com.kimboo.retrofit.api.ExampleApi
 import dagger.Module
 import dagger.Provides
@@ -32,6 +29,19 @@ class RepositoryModule {
         exampleApi: ExampleApi
     ) : ProfileRepository {
         return ProfileNetworkRepository(
+            uiScheduler = uiScheduler,
+            backgroundScheduler = backgroundScheduler,
+            retrofitApi = exampleApi
+        )
+    }
+
+    @Provides
+    fun provideRecepiesNetworkRepository(
+        @Named("uiScheduler") uiScheduler: Scheduler,
+        @Named("backgroundScheduler") backgroundScheduler: Scheduler,
+        exampleApi: ExampleApi
+    ) : RecepiesNetworkRepository {
+        return RecepiesNetworkRepositoryImpl(
             uiScheduler = uiScheduler,
             backgroundScheduler = backgroundScheduler,
             retrofitApi = exampleApi
