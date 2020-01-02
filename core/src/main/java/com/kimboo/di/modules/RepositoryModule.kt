@@ -54,8 +54,8 @@ class RepositoryModule {
         @Named("uiScheduler") uiScheduler: Scheduler,
         @Named("backgroundScheduler") backgroundScheduler: Scheduler,
         recipesDao: RecipesDao
-    ) : RecepiesCacheRepository {
-        return RecepiesCacheRepositoryImpl(
+    ) : RecipesCacheRepository {
+        return RecipesCacheRepositoryImpl(
             uiScheduler = uiScheduler,
             backgroundScheduler = backgroundScheduler,
             recepiesDao = recipesDao

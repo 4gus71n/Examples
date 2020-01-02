@@ -1,19 +1,19 @@
 package com.kimboo.repositories
 
 import com.kimboo.room.dao.RecipesDao
-import com.kimboo.room.dto.DbRecepieDto
+import com.kimboo.room.dto.DbRecipeDto
 import com.kimboo.utils.DataResponse
 import com.kimboo.utils.toCachedDataResponse
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 
-class RecepiesCacheRepositoryImpl(
+class RecipesCacheRepositoryImpl(
     private val recepiesDao: RecipesDao,
     private val uiScheduler: Scheduler,
     private val backgroundScheduler: Scheduler
-) : RecepiesCacheRepository {
-    override fun storeRecepies(recepies: List<DbRecepieDto>): Observable<DataResponse<Boolean>> {
-        return recepiesDao.storeRecipes(recepies)
+) : RecipesCacheRepository {
+    override fun storeRecipes(recipes: List<DbRecipeDto>): Observable<DataResponse<Boolean>> {
+        return recepiesDao.storeRecipes(recipes)
             // The observable replies with true if anything changed on the DB
             .map { it.isNotEmpty() }
             .toCachedDataResponse()
@@ -21,8 +21,8 @@ class RecepiesCacheRepositoryImpl(
             .subscribeOn(backgroundScheduler)
     }
 
-    override fun updateRecepie(recepie: DbRecepieDto): Observable<DataResponse<Boolean>> {
-        return recepiesDao.updateRecipes(recepie)
+    override fun updateRecipe(recipe: DbRecipeDto): Observable<DataResponse<Boolean>> {
+        return recepiesDao.updateRecipes(recipe)
             // The observable replies with true if anything changed on the DB
             .map { it > 0 }
             .toCachedDataResponse()
@@ -30,7 +30,7 @@ class RecepiesCacheRepositoryImpl(
             .subscribeOn(backgroundScheduler)
     }
 
-    override fun getAllRecepies(): Observable<DataResponse<List<DbRecepieDto>>> {
+    override fun getAllRecipes(): Observable<DataResponse<List<DbRecipeDto>>> {
         return recepiesDao.getAllRecipes()
             .toCachedDataResponse()
             .observeOn(uiScheduler)
