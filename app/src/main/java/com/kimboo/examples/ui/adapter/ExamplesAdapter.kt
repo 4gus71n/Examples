@@ -36,6 +36,10 @@ class ExamplesAdapter(
         Example(
             title = context.getString(R.string.example2_title),
             description = context.getString(R.string.example2_subtitle)
+        ),
+        Example(
+            title = context.getString(R.string.cache_example1_title),
+            description = context.getString(R.string.cache_example1_subtitle)
         )
     )
 
