@@ -14,4 +14,8 @@ interface RecipesCacheRepository{
     ): Observable<DataResponse<Boolean>>
 
     fun getAllRecipes(): Observable<DataResponse<List<DbRecipeDto>>>
+
+    fun getRecipeById(
+        recipeId: Int
+    ): Observable<DataResponse<DbRecipeDto>>
 }

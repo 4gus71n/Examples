@@ -36,4 +36,13 @@ class RecipesCacheRepositoryImpl(
             .observeOn(uiScheduler)
             .subscribeOn(backgroundScheduler)
     }
+
+    override fun getRecipeById(
+        recipeId: Int
+    ): Observable<DataResponse<DbRecipeDto>> {
+        return recepiesDao.getRecipeById(recipeId)
+        .toCachedDataResponse()
+        .observeOn(uiScheduler)
+        .subscribeOn(backgroundScheduler)
+    }
 }

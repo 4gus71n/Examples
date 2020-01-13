@@ -29,6 +29,12 @@ fun <T : Any> Single<Response<T>>.toDataResponse(): Observable<DataResponse<T>> 
     .toObservable()
 }
 
+fun <T : Any> Observable<T>.toCachedDataResponse(): Observable<DataResponse<T>> {
+    return map {
+        DataResponse(it, DataResponse.Status.DB_RESPONSE)
+    }
+}
+
 fun <T : Any> Flowable<T>.toCachedDataResponse(): Observable<DataResponse<T>> {
     return map {
         DataResponse(it, DataResponse.Status.DB_RESPONSE)
