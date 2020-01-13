@@ -2,7 +2,10 @@
     package="com.kimboo.example2">
 
     <application>
-
+        <activity android:name=".ui.examplecache1.ExampleCache1Activity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".ui.examplecache1detail.ExampleCache1DetailActivity"
+            android:launchMode="singleTop"/>
     </application>
 
 </manifest>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">example2</string>
+    <string name="ingredients_format_label" formatted="true">Ingredients: %s</string>
 </resources>
