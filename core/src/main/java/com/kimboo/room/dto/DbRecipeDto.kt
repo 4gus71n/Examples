@@ -16,3 +16,4 @@ data class DbRecipeDto(
     val ingredients: List<String>,
     val isBookmarked: Boolean = false
 )
+
