@@ -10,7 +10,8 @@ class DataResponse<MODEL: Any>(
     enum class Status {
         SUCCESS,
         EMPTY,
-        CACHED_RESPONSE
+        CACHED_RESPONSE,
+        DB_RESPONSE
     }
 }
 

@@ -1,13 +1,8 @@
 package com.kimboo.mappers
 
-import com.kimboo.models.BusinessSkills
-import com.kimboo.models.NewFeed
-import com.kimboo.models.NewFeedMetadata
-import com.kimboo.models.ProfileInformation
-import com.kimboo.retrofit.responses.ApiBusinessSkilssResponse
-import com.kimboo.retrofit.responses.ApiNewFeedListResponse
-import com.kimboo.retrofit.responses.ApiNewFeedResponse
-import com.kimboo.retrofit.responses.ApiProfileResponse
+import com.kimboo.models.*
+import com.kimboo.retrofit.responses.*
+import com.kimboo.room.dto.DbRecipeDto
 
 /**
  * Classes with extended functions to turn backend responses into model classes
@@ -48,4 +43,42 @@ fun ApiProfileResponse.toProfile(): ProfileInformation {
         lastName = lastName,
         email = email
     )
+}
+
+fun List<ApiRecipeResponse>.fromApiListToModelList(): List<Recipe> {
+    return map { it.fromApiToModel() }
+}
+
+fun ApiRecipeResponse.fromApiToModel(): Recipe {
+    return Recipe(
+        id = id,
+        name = name,
+        ingredients = ingredients
+    )
+}
+
+fun List<DbRecipeDto>.fromDbListToModelList(): List<Recipe> {
+    return map { it.fromDbToModel() }
+}
+
+fun DbRecipeDto.fromDbToModel(): Recipe {
+    return Recipe(
+        id = id,
+        name = name,
+        ingredients = ingredients,
+        isBookmarked = isBookmarked
+    )
+}
+
+fun Recipe.fromModelToDb(): DbRecipeDto {
+    return DbRecipeDto(
+        id = id,
+        name = name,
+        ingredients = ingredients,
+        isBookmarked = isBookmarked
+    )
+}
+
+fun List<Recipe>.fromModelListToDbList(): List<DbRecipeDto> {
+    return map { it.fromModelToDb() }
 }

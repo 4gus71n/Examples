@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activityExampleCache1DetailAppbarLayout"
+        style="@style/Examples.AppBarOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:titleEnabled="false"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/activityExampleCache1DetailToolbar"
+                app:title="Example Cache Recipes"
+                app:layout_collapseMode="pin"
+                android:theme="@style/Examples.AppBarOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <LinearLayout
+                android:layout_marginTop="?attr/actionBarSize"
+                android:id="@+id/activityExampleCache1DetailDescriptionContainer"
+                app:layout_collapseMode="parallax"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Here we are able to fetch a single Recipe by id from cache. We are also able to bookmark the recipe by tapping on the bookmark icon. Since we are using Flowables within the Interactor, as soon as we mark the Recipe as bookmarked, the Recipe list on the previous activity it is also updated."
+                    android:padding="4dp"
+                    style="@style/Examples.TextAppearance.Description.Inverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/Examples.TextAppearance.Title"
+                tools:text="Really long title title title title title title title title title title title title"
+                android:id="@+id/activityExampleCache1DetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                app:layout_constraintTop_toBottomOf="@+id/viewHolderExampleCacheTitle"
+                android:paddingTop="8dp"
+                style="@style/Examples.TextAppearance.Description"
+                tools:text="Really long description description description description description description description description"
+                android:id="@+id/activityExampleCache1DetailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

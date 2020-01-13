@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:visible="false"
+        android:title="Mark"
+        android:id="@+id/action_bookmark"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_bookmark_border_24dp"/>
+    <item
+        android:visible="false"
+        android:title="Unmark"
+        android:id="@+id/action_unmark"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_bookmark_24dp"/>
+</menu>

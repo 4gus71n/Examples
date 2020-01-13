@@ -1,10 +1,8 @@
 package com.kimboo.di.modules
 
-import com.kimboo.repositories.NewsNetworkRepository
-import com.kimboo.repositories.NewsRepository
-import com.kimboo.repositories.ProfileNetworkRepository
-import com.kimboo.repositories.ProfileRepository
+import com.kimboo.repositories.*
 import com.kimboo.retrofit.api.ExampleApi
+import com.kimboo.room.dao.RecipesDao
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -35,6 +33,32 @@ class RepositoryModule {
             uiScheduler = uiScheduler,
             backgroundScheduler = backgroundScheduler,
             retrofitApi = exampleApi
+        )
+    }
+
+    @Provides
+    fun provideRecepiesNetworkRepository(
+        @Named("uiScheduler") uiScheduler: Scheduler,
+        @Named("backgroundScheduler") backgroundScheduler: Scheduler,
+        exampleApi: ExampleApi
+    ) : RecipesNetworkRepository {
+        return RecipesNetworkRepositoryImpl(
+            uiScheduler = uiScheduler,
+            backgroundScheduler = backgroundScheduler,
+            retrofitApi = exampleApi
+        )
+    }
+
+    @Provides
+    fun provideRecepiesCacheRepository(
+        @Named("uiScheduler") uiScheduler: Scheduler,
+        @Named("backgroundScheduler") backgroundScheduler: Scheduler,
+        recipesDao: RecipesDao
+    ) : RecipesCacheRepository {
+        return RecipesCacheRepositoryImpl(
+            uiScheduler = uiScheduler,
+            backgroundScheduler = backgroundScheduler,
+            recepiesDao = recipesDao
         )
     }
 }

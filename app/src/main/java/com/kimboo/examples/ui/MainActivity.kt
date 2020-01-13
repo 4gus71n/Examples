@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity(), ExamplesAdapter.Callback {
             1 -> {
                 startActivity(ActivityBuilder.getExample2Intent(this))
             }
+            2 -> {
+                startActivity(ActivityBuilder.getExampleCache1Intent(this))
+            }
         }
     }
     // endregion

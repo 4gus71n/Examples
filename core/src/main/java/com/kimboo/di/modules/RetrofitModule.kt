@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class RetrofitModule {
     @Provides
     @Singleton
-    fun provideImgurAPI(retrofit: Retrofit): ExampleApi {
+    fun provideExampleApi(retrofit: Retrofit): ExampleApi {
         return retrofit.create(ExampleApi::class.java)
     }
 }
