@@ -3,8 +3,10 @@
 
     <application>
         <activity android:name=".ui.examplecache1.ExampleCache1Activity"
+            android:parentActivityName="com.kimboo.examples.ui.MainActivity"
             android:launchMode="singleTop"/>
         <activity android:name=".ui.examplecache1detail.ExampleCache1DetailActivity"
+            android:parentActivityName=".ui.examplecache1.ExampleCache1Activity"
             android:launchMode="singleTop"/>
     </application>
 
