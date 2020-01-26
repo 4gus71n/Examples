@@ -1,6 +1,6 @@
 package com.kimboo.example2.di.component
 
-import com.kimboo.di.component.BaseSubComponent
+import com.kimboo.core.di.component.BaseSubComponent
 import com.kimboo.example2.di.modules.Example2ViewModelModule
 import com.kimboo.example2.ui.examplecache1.ExampleCache1Activity
 import com.kimboo.example2.ui.examplecache1detail.ExampleCache1DetailActivity

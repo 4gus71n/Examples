@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kimboo.example2.R
-import com.kimboo.models.Recipe
+import com.kimboo.core.models.Recipe
 import kotlinx.android.synthetic.main.view_holder_recipe.view.*
 
 class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {

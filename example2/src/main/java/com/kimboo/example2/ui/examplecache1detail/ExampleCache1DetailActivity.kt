@@ -13,9 +13,9 @@ import com.kimboo.example2.R
 import com.kimboo.example2.di.component.DaggerExample2ViewInjector
 import com.kimboo.example2.di.component.Example2ViewInjector
 import com.kimboo.example2.ui.examplecache1detail.viewmodel.ExampleCache1DetailViewModel
-import com.kimboo.models.Recipe
-import com.kimboo.utils.MyViewModelFactory
-import com.kimboo.utils.getBaseSubComponent
+import com.kimboo.core.models.Recipe
+import com.kimboo.core.utils.MyViewModelFactory
+import com.kimboo.core.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_cache_1_detail.*
 import javax.inject.Inject
 import kotlin.math.abs

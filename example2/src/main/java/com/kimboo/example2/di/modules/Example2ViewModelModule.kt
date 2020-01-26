@@ -3,7 +3,7 @@ package com.kimboo.example2.di.modules
 import androidx.lifecycle.ViewModel
 import com.kimboo.example2.ui.examplecache1.viewmodel.ExampleCache1ViewModel
 import com.kimboo.example2.ui.examplecache1detail.viewmodel.ExampleCache1DetailViewModel
-import com.kimboo.utils.ViewModelKey
+import com.kimboo.core.utils.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -2,8 +2,8 @@ package com.kimboo.example2.ui.examplecache1.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kimboo.interactors.GetAllRecipesInteractor
-import com.kimboo.models.Recipe
+import com.kimboo.core.interactors.GetAllRecipesInteractor
+import com.kimboo.core.models.Recipe
 import javax.inject.Inject
 
 class ExampleCache1ViewModel @Inject constructor(
