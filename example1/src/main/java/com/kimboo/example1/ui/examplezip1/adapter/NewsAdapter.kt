@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kimboo.example1.R
-import com.kimboo.models.NewFeed
+import com.kimboo.core.models.NewFeed
 import kotlinx.android.synthetic.main.view_holder_example1_item.view.*
 import kotlin.RuntimeException
 

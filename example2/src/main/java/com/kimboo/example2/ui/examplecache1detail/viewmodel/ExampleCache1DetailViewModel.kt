@@ -2,9 +2,9 @@ package com.kimboo.example2.ui.examplecache1detail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kimboo.interactors.BookmarkRecipeInteractor
-import com.kimboo.interactors.GetRecipeByIdInteractor
-import com.kimboo.models.Recipe
+import com.kimboo.core.interactors.BookmarkRecipeInteractor
+import com.kimboo.core.interactors.GetRecipeByIdInteractor
+import com.kimboo.core.models.Recipe
 import javax.inject.Inject
 
 class ExampleCache1DetailViewModel @Inject constructor(

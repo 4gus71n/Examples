@@ -2,9 +2,9 @@ package com.kimboo.example1.ui.examplezip2.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kimboo.interactors.GetProfileInteractor
-import com.kimboo.models.BusinessSkills
-import com.kimboo.models.ProfileInformation
+import com.kimboo.core.interactors.GetProfileInteractor
+import com.kimboo.core.models.BusinessSkills
+import com.kimboo.core.models.ProfileInformation
 import javax.inject.Inject
 
 class ExampleZip2ViewModel @Inject constructor(

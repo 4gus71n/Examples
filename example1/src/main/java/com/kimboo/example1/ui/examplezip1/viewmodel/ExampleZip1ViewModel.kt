@@ -2,8 +2,8 @@ package com.kimboo.example1.ui.examplezip1.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kimboo.interactors.GetNewsInteractor
-import com.kimboo.models.NewFeed
+import com.kimboo.core.interactors.GetNewsInteractor
+import com.kimboo.core.models.NewFeed
 import javax.inject.Inject
 
 class ExampleZip1ViewModel @Inject constructor(

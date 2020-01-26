@@ -11,8 +11,8 @@ import com.kimboo.example1.di.component.DaggerExample1ViewInjector
 import com.kimboo.example1.di.component.Example1ViewInjector
 import com.kimboo.example1.ui.examplezip1.adapter.NewsAdapter
 import com.kimboo.example1.ui.examplezip1.viewmodel.ExampleZip1ViewModel
-import com.kimboo.utils.MyViewModelFactory
-import com.kimboo.utils.getBaseSubComponent
+import com.kimboo.core.utils.MyViewModelFactory
+import com.kimboo.core.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_1.*
 import javax.inject.Inject
 import kotlin.math.abs

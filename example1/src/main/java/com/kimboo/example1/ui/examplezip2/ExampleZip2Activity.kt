@@ -10,10 +10,10 @@ import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
 import com.kimboo.example1.di.component.Example1ViewInjector
 import com.kimboo.example1.ui.examplezip2.viewmodel.ExampleZip2ViewModel
-import com.kimboo.models.BusinessSkills
-import com.kimboo.models.ProfileInformation
-import com.kimboo.utils.MyViewModelFactory
-import com.kimboo.utils.getBaseSubComponent
+import com.kimboo.core.models.BusinessSkills
+import com.kimboo.core.models.ProfileInformation
+import com.kimboo.core.utils.MyViewModelFactory
+import com.kimboo.core.utils.getBaseSubComponent
 import kotlinx.android.synthetic.main.activity_example_2.*
 import kotlinx.android.synthetic.main.activity_example_2_business.*
 import kotlinx.android.synthetic.main.activity_example_2_profile.*
