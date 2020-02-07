@@ -5,11 +5,21 @@ import com.kimboo.core.repositories.NewsRepository
 import com.kimboo.core.repositories.ProfileRepository
 import com.kimboo.core.repositories.RecipesCacheRepository
 import com.kimboo.core.repositories.RecipesNetworkRepository
+import com.kimboo.core.repositories.imgur.ApiImgurGalleryRepository
 import dagger.Module
 import dagger.Provides
 
 @Module
 class InteractorModule {
+    @Provides
+    fun provideGetImgurPostsInteractor(
+        apiImgurGalleryRepository: ApiImgurGalleryRepository
+    ) : GetImgurPostsInteractor {
+        return GetImgurPostsInteractorImpl(
+            apiImgurGalleryRepository
+        )
+    }
+
     @Provides
     fun provideGetNewsInteractor(
         newsRepository: NewsRepository

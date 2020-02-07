@@ -6,4 +6,6 @@
     <string name="example2_subtitle">Another example about zipping requests together</string>
     <string name="cache_example1_title">Cache example by using Room w/ RxJava+Flowables</string>
     <string name="cache_example1_subtitle">Fetches a list of recipes, stores them on cache and allows you to react to any change on the database</string>
+    <string name="imgur_example_title">LiveData Examples</string>
+    <string name="imgur_example_subtitle">Showcase different scenarios where we mix LiveData properties.</string>
 </resources>

@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity(), ExamplesAdapter.Callback {
             2 -> {
                 startActivity(ActivityBuilder.getExampleCache1Intent(this))
             }
+            3 -> {
+                startActivity(ActivityBuilder.getExampleImgur1Intent(this))
+            }
         }
     }
     // endregion

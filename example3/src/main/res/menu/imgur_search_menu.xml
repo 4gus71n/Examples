@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_imgur_sort"
+        android:title="Sort"
+        android:visible="true"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_sort_black_24dp">
+        <menu>
+            <item android:id="@+id/action_imgur_sort_top"
+                android:title="Top"
+                android:checked="true"
+                android:checkable="true"
+                android:visible="true"/>
+            <item android:id="@+id/action_imgur_sort_viral"
+                android:title="Viral"
+                android:checkable="true"
+                android:visible="true"/>
+        </menu>
+    </item>
+
+    <item android:id="@+id/action_imgur_window"
+        android:title="Window"
+        android:visible="true"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_filter_list_black_24dp">
+
+        <menu>
+            <item android:id="@+id/action_imgur_window_day"
+                android:title="Day"
+                android:checkable="true"
+                android:visible="true"/>
+            <item android:id="@+id/action_imgur_window_week"
+                android:title="Week"
+                android:checkable="true"
+                android:visible="true"/>
+            <item android:id="@+id/action_imgur_window_month"
+                android:checkable="true"
+                android:checked="true"
+                android:title="Month"
+                android:visible="true"/>
+        </menu>
+    </item>
+
+    <item android:id="@+id/action_imgur_search"
+        android:title="Search"
+        android:visible="true"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search_white_24dp"/>
+</menu>

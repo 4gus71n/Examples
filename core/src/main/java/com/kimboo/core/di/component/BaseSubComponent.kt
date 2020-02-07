@@ -10,6 +10,7 @@ import dagger.Subcomponent
  */
 @Subcomponent
 interface BaseSubComponent {
+    val getImgurPostsInteractor: GetImgurPostsInteractor
     val getAllRecipesInteractor: GetAllRecipesInteractor
     val getRecipeByIdInteractor: GetRecipeByIdInteractor
     val bookmarkRecipeInteractor: BookmarkRecipeInteractor
