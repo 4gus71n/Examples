@@ -5,14 +5,17 @@ import android.content.Intent
 
 class ActivityBuilder {
     companion object {
-        fun getExample1Intent(context: Context) : Intent {
+        fun getExample1Intent(context: Context): Intent {
             return Intent(context, Class.forName("com.kimboo.example1.ui.examplezip1.ExampleZip1Activity"))
         }
-        fun getExample2Intent(context: Context) : Intent {
+        fun getExample2Intent(context: Context): Intent {
             return Intent(context, Class.forName("com.kimboo.example1.ui.examplezip2.ExampleZip2Activity"))
         }
-        fun getExampleCache1Intent(context: Context) : Intent {
+        fun getExampleCache1Intent(context: Context): Intent {
             return Intent(context, Class.forName("com.kimboo.example2.ui.examplecache1.ExampleCache1Activity"))
+        }
+        fun getExampleImgur1Intent(context: Context): Intent {
+            return Intent(context, Class.forName("com.kimboo.example3.ui.search.ExampleImgurActivity"))
         }
     }
 }

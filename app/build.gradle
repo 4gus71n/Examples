@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
+
     defaultConfig {
         applicationId "com.kimboo.examples"
         minSdkVersion 23
@@ -14,6 +15,13 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    // TODO Here to make sure that SimpleSearchView works properly
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -27,6 +35,7 @@ dependencies {
     implementation project(":core")
     implementation project(":example1")
     implementation project(":example2")
+    implementation project(":example3")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

@@ -1,7 +1,10 @@
 package com.kimboo.core.mappers
 
 import com.kimboo.core.models.*
+import com.kimboo.core.models.imgur.ImgurGallery
+import com.kimboo.core.models.imgur.ImgurImage
 import com.kimboo.core.retrofit.responses.*
+import com.kimboo.core.retrofit.responses.imgur.ApiImgurGalleryResponse
 import com.kimboo.core.room.dto.DbRecipeDto
 
 /**
@@ -81,4 +84,22 @@ fun Recipe.fromModelToDb(): DbRecipeDto {
 
 fun List<Recipe>.fromModelListToDbList(): List<DbRecipeDto> {
     return map { it.fromModelToDb() }
+}
+
+fun ApiImgurGalleryResponse.toImgurList(): List<ImgurGallery> {
+    return data?.map { response ->
+        ImgurGallery(
+            commentCount = response.commentCount ?: 0,
+            title = response.title ?: "",
+            cover = response.cover,
+            id = response.id,
+            images = response.images?.map { image ->
+                ImgurImage(
+                    id = image.id,
+                    commentCount = image.commentCount ?: 0,
+                    imageUrl = image.id
+                )
+            } ?: emptyList()
+        )
+    } ?: emptyList()
 }

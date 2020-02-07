@@ -3,6 +3,9 @@ package com.kimboo.core.di.modules
 import com.kimboo.core.retrofit.api.ExampleApi
 import com.kimboo.core.dao.RecipesDao
 import com.kimboo.core.repositories.*
+import com.kimboo.core.repositories.imgur.ApiImgurGalleryRepository
+import com.kimboo.core.repositories.imgur.ApiImgurGalleryRepositoryImpl
+import com.kimboo.core.retrofit.api.ImgurApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -10,6 +13,19 @@ import javax.inject.Named
 
 @Module
 class RepositoryModule {
+    @Provides
+    fun provideApiImgurGalleryRepository(
+        @Named("uiScheduler") uiScheduler: Scheduler,
+        @Named("backgroundScheduler") backgroundScheduler: Scheduler,
+        imgurApi: ImgurApi
+    ) : ApiImgurGalleryRepository {
+        return ApiImgurGalleryRepositoryImpl(
+            uiScheduler = uiScheduler,
+            backgroundScheduler = backgroundScheduler,
+            imgurApi = imgurApi
+        )
+    }
+
     @Provides
     fun provideNewsRepository(
         @Named("uiScheduler") uiScheduler: Scheduler,

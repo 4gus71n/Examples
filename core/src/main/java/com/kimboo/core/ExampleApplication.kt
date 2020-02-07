@@ -17,12 +17,15 @@ class ExampleApplication : Application() {
         return DaggerAppComponent.builder()
             .appModule(onBuildAppModule())
             .interactorModule(onBuildInteractorModule())
-            .networkModule(onBuildNetworkModule())
+            .exampleNetworkModule(onBuildNetworkModule())
+            .imgurNetworkModule(onBuildImgurNetworkModule())
             .repositoryModule(onBuildRepositoryModule())
             .retrofitModule(onBuildRetrofitModule())
             .roomModule(onBuildRoomModule())
             .build()
     }
+
+    private fun onBuildImgurNetworkModule() = ImgurNetworkModule()
 
     private fun onBuildRoomModule() = RoomModule()
 
@@ -30,7 +33,7 @@ class ExampleApplication : Application() {
 
     private fun onBuildRepositoryModule() = RepositoryModule()
 
-    private fun onBuildNetworkModule() = NetworkModule()
+    private fun onBuildNetworkModule() = ExampleNetworkModule()
 
     private fun onBuildInteractorModule() = InteractorModule()
 

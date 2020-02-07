@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kimboo.example3">
+    <application>
+        <activity android:name=".ui.search.ExampleImgurActivity"
+            android:parentActivityName="com.kimboo.examples.ui.MainActivity"
+            android:launchMode="singleTop"/>
+    </application>
+</manifest>

@@ -40,6 +40,10 @@ class ExamplesAdapter(
         Example(
             title = context.getString(R.string.cache_example1_title),
             description = context.getString(R.string.cache_example1_subtitle)
+        ),
+        Example(
+            title = context.getString(R.string.imgur_example_title),
+            description = context.getString(R.string.imgur_example_subtitle)
         )
     )
 

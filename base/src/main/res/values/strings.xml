@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">base</string>
+    <string name="error_no_internet_connection">Oops! Seems that you don\'t have internet connection.</string>
+    <string name="error_unknown_error">Oops! Something went wrong, please try again later.</string>
 </resources>
