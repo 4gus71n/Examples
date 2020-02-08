@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Examples</string>
-    <string name="example1_title">Zipping requests</string>
-    <string name="example1_subtitle">Zipping two request from different sources through one single use case.</string>
-    <string name="example2_title">More zipping</string>
-    <string name="example2_subtitle">Another example about zipping requests together</string>
-    <string name="cache_example1_title">Cache example by using Room w/ RxJava+Flowables</string>
-    <string name="cache_example1_subtitle">Fetches a list of recipes, stores them on cache and allows you to react to any change on the database</string>
-    <string name="imgur_example_title">LiveData Examples</string>
-    <string name="imgur_example_subtitle">Showcase different scenarios where we mix LiveData properties.</string>
+    <string name="example1_title">RxJava Example #1</string>
+    <string name="example1_subtitle">Showing how to zip more two calls from different sources through RxJava.</string>
+    <string name="example2_title">RxJava Example #2</string>
+    <string name="example2_subtitle">Another example about zipping calls and handling errors.</string>
+    <string name="cache_example1_title">Cache Example</string>
+    <string name="cache_example1_subtitle">Showing how to use Room to persist data and dynamically observe the changes.</string>
+    <string name="imgur_example_title">LiveData Example</string>
+    <string name="imgur_example_subtitle">Showing how to handle different states through LiveData.</string>
 </resources>

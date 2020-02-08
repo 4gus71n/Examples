@@ -20,7 +20,7 @@ class ExampleNetworkModule {
     fun provideGson(): Gson {
         return GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            // TODO Just for the Imgur
+            // Gson deserializer to deserialize dates from the Imgur API
             .registerTypeAdapter(Date::class.java, DateDeserializer())
             .create()
     }

@@ -1,6 +1,6 @@
 package com.kimboo.core.repositories
 
-import com.kimboo.core.dao.RecipesDao
+import com.kimboo.core.room.dao.RecipesDao
 import com.kimboo.core.room.dto.DbRecipeDto
 import com.kimboo.core.utils.DataResponse
 import com.kimboo.core.utils.toCachedDataResponse

@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * Retrofit's interface API.
+ * Retrofit's interface that we use to communicate with a mock API hosted on apiary.io
  */
 interface ExampleApi {
     /**
@@ -27,12 +27,21 @@ interface ExampleApi {
     @GET("news/recent")
     fun fetchRecentlyViewedNews(): Single<Response<ApiNewFeedListResponse>>
 
+    /**
+     * Fetches the user profile information
+     */
     @GET("profile")
     fun fetchProfileInfo(   ): Single<Response<ApiProfileResponse>>
 
+    /**
+     * Fetches the user business skills
+     */
     @GET("business")
     fun fetchBusinessSkills(): Single<Response<ApiBusinessSkilssResponse>>
 
+    /**
+     * Fetches a list of cooking recipes
+     */
     @GET("recipes")
     fun fetchAllRecipes(): Single<Response<List<ApiRecipeResponse>>>
 }

@@ -1,4 +1,5 @@
 <resources>
-    <string name="example_imgur_large_description">In this example we show how is possible through LiveData (MediatorLiveData) to handle changes on a ViewModel. Here we are showing a list of post (feed through the Imgur API) we can filter the posts that we show by a query (search term), a sort ("top" or "viral"), and if you sort by top you can choose a sorting window (daily, weekly, monthly). We basically use a MediatorLiveData property to listen for the changes on other LiveData properties and based on that we perform the search.</string>
+    <string name="example_imgur_large_description">In this example we show how is possible through LiveData (MediatorLiveData) to handle changes on a ViewModel.\n\nHere we are showing a list of post (feed through the Imgur API) we can filter the posts that we show by a query (search term), a sort ("top" or "viral"), and if you sort by top you can choose a sorting window (daily, weekly, monthly).\n\nWe basically use a MediatorLiveData property to listen for the changes on other LiveData properties and based on that we perform the search.</string>
     <string name="error_no_search_result_found" formatted="true">No search results matching \"%s\"</string>
+    <string name="example_3_toolbar_title">LiveData Example</string>
 </resources>

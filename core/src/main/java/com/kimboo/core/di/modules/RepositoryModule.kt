@@ -1,7 +1,7 @@
 package com.kimboo.core.di.modules
 
 import com.kimboo.core.retrofit.api.ExampleApi
-import com.kimboo.core.dao.RecipesDao
+import com.kimboo.core.room.dao.RecipesDao
 import com.kimboo.core.repositories.*
 import com.kimboo.core.repositories.imgur.ApiImgurGalleryRepository
 import com.kimboo.core.repositories.imgur.ApiImgurGalleryRepositoryImpl

@@ -1,8 +1,8 @@
-package com.kimboo.core
+package com.kimboo.core.room
 
 import android.content.Context
 import androidx.room.*
-import com.kimboo.core.dao.RecipesDao
+import com.kimboo.core.room.dao.RecipesDao
 import com.kimboo.core.room.dto.DbRecipeDto
 
 @Database(

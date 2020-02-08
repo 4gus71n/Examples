@@ -20,7 +20,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/activityExample2Toolbar"
-                app:title="Example 2"
+                app:title="@string/example_2_toolbar_title"
                 app:layout_collapseMode="pin"
                 android:theme="@style/Examples.AppBarOverlay"
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Here we're using the GetProfileInteractor to fetch the personal information and business skills. Notice that if something goes wrong while either calling the /profile or the /business, we automatically hide that section."
+                    android:text="@string/example_2_long_description"
                     android:padding="4dp"
                     style="@style/Examples.TextAppearance.Description.Inverse"
                     android:layout_width="match_parent"
