@@ -1,8 +1,8 @@
 package com.kimboo.core.di.modules
 
 import android.content.Context
-import com.kimboo.core.ExampleRoomDatabase
-import com.kimboo.core.dao.RecipesDao
+import com.kimboo.core.room.ExampleRoomDatabase
+import com.kimboo.core.room.dao.RecipesDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

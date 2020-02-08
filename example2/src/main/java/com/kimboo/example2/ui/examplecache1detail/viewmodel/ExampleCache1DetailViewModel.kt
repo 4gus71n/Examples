@@ -38,7 +38,7 @@ class ExampleCache1DetailViewModel @Inject constructor(
 
     // region BookmarkRecipeInteractor.Callback implementation
     override fun onSuccessfullyBookmarkedRecipe(isBookmarked: Boolean) {
-
+        // Do nothing here, we don't care about this hook.
     }
 
     override fun onErrorFetchingRecipes() {

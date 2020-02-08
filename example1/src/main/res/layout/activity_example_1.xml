@@ -20,7 +20,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/activityExample1Toolbar"
-                app:title="Example 1"
+                app:title="@string/example_1_toolbar_title"
                 app:layout_collapseMode="pin"
                 android:theme="@style/Examples.AppBarOverlay"
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="We are using the GetNewsInteractor to fetch the recently viewed news and the paginated news altogether. Notice that when we paginate through the list we don't fetch the recently viewed articles again. However, if we do a Pull-To-Refresh we do fetch them again."
+                    android:text="@string/example_1_long_description"
                     android:padding="4dp"
                     style="@style/Examples.TextAppearance.Description.Inverse"
                     android:layout_width="match_parent"

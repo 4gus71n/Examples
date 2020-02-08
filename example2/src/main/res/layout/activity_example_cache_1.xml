@@ -20,7 +20,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/activityExampleCache1Toolbar"
-                app:title="Example Cache Recipes"
+                app:title="@string/example_2_cache_toolbar_title"
                 app:layout_collapseMode="pin"
                 android:theme="@style/Examples.AppBarOverlay"
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Here we are fetching a list of recipes from the backend, then we store them on cache. We are also able to bookmark this recipes, this whole bookmarking process is done only on cache."
+                    android:text="@string/example_2_cache_description"
                     android:padding="4dp"
                     style="@style/Examples.TextAppearance.Description.Inverse"
                     android:layout_width="match_parent"

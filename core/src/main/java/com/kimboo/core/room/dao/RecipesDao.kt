@@ -1,4 +1,4 @@
-package com.kimboo.core.dao
+package com.kimboo.core.room.dao
 
 import androidx.room.*
 import com.kimboo.core.room.dto.DbRecipeDto

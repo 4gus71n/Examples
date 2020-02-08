@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">example2</string>
     <string name="ingredients_format_label" formatted="true">Ingredients: %s</string>
+    <string name="example_2_cache_description">In this example we fetch a list of recipes from the /recipes endpoint and store them on cache. We can also mark the recipes as bookmarked and see the changes reflected immediately in the list.</string>
+    <string name="example_2_cache_toolbar_title">Cache Example</string>
+    <string name="example_2_cache_detail_toolbar_title">Cache Example Detail</string>
+    <string name="example_2_cache_detail_long_description">Here we can mark a recipe as bookmarked and see that change go live, dynamically, through Flowables in the previous screen.</string>
 </resources>
