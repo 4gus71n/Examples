@@ -3,4 +3,6 @@
     <string name="example_2_long_description">Here we\'re using the GetProfileInteractor to fetch the personal information and business skills. Notice that if something goes wrong while either calling the /profile or the /business, we automatically hide that section.</string>
     <string name="example_2_toolbar_title">RxJava Example #2</string>
     <string name="example_1_toolbar_title">RxJava Example #1</string>
+    <string name="error_fetching_business_skills">Something went wrong while trying to fetch the business information. Try again later.</string>
+    <string name="error_fetching_profile_info">Something went wrong while trying to fetch the profile information. Try again later.</string>
 </resources>
