@@ -8,8 +8,9 @@ interface GetAllRecipesInteractor {
             recipes: List<Recipe>
         )
         fun onErrorFetchingRecipes()
+        fun onNoInternetConnection()
     }
 
-    fun connect(callback: Callback)
-    fun disconnect()
+    fun execute(callback: Callback)
+    fun dispose()
 }
