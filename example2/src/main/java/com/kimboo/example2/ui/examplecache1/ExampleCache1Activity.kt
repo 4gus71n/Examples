@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.snackbar.Snackbar
 import com.kimboo.example2.R
 import com.kimboo.example2.di.component.DaggerExample2ViewInjector
 import com.kimboo.example2.di.component.Example2ViewInjector
@@ -56,15 +57,38 @@ class ExampleCache1Activity : AppCompatActivity(), RecipesAdapter.Callback {
             .get(ExampleCache1ViewModel::class.java)
 
         observeStateChanges()
-        observeLoadingChanges()
+        observeMessageChanges()
 
         viewModel.fetchRecipes()
     }
 
-    private fun observeLoadingChanges() {
-        viewModel.isLoading.observe(this, Observer {
-            activityExampleCache1SwipeRefreshLayout.isRefreshing = it
+    private fun observeMessageChanges() {
+        viewModel.message.observe(this, Observer {
+            when (it) {
+                is ExampleCache1ViewModel.Message.UnknownError -> {
+                    onShowUnknownErrorSnackbar()
+                }
+                is ExampleCache1ViewModel.Message.NoInternetConnection -> {
+                    onShowNoInternetConnectionSnackbar()
+                }
+            }
         })
+    }
+
+    private fun onShowUnknownErrorSnackbar() {
+        Snackbar.make(
+            activityExampleCache1Container,
+            getString(R.string.error_unknown_error),
+            Snackbar.LENGTH_LONG
+        ).show()
+    }
+
+    private fun onShowNoInternetConnectionSnackbar() {
+        Snackbar.make(
+            activityExampleCache1Container,
+            getString(R.string.error_no_internet_connection),
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
     private fun observeStateChanges() {
@@ -73,11 +97,39 @@ class ExampleCache1Activity : AppCompatActivity(), RecipesAdapter.Callback {
                 is ExampleCache1ViewModel.State.Success -> {
                     onShowRecipes(it.list)
                 }
+                is ExampleCache1ViewModel.State.NoInternetConnection -> {
+                    onShowNoInternetConnectionError()
+                }
+                is ExampleCache1ViewModel.State.UnknownError -> {
+                    onShownUnknownErrorStateView()
+                }
+                is ExampleCache1ViewModel.State.IsLoading -> {
+                    onChangeLoadingState(it.loading)
+                }
             }
         })
     }
 
+    private fun onChangeLoadingState(loading: Boolean) {
+        activityExampleCache1SwipeRefreshLayout.isRefreshing = loading
+    }
+
+    private fun onShownUnknownErrorStateView() {
+        activityExampleCache1RecipesStateDisplay.show {
+            image(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
+            title(R.string.error_unknown_error)
+        }
+    }
+
+    private fun onShowNoInternetConnectionError() {
+        activityExampleCache1RecipesStateDisplay.show {
+            image(R.drawable.ic_signal_wifi_off_black_24dp)
+            title(R.string.error_no_internet_connection)
+        }
+    }
+
     private fun onShowRecipes(list: List<Recipe>) {
+        activityExampleCache1RecipesStateDisplay.hide()
         adapter.recipes.clear()
         adapter.recipes.addAll(list)
         adapter.notifyDataSetChanged()
