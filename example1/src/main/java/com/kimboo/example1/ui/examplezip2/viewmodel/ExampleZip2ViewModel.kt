@@ -11,6 +11,7 @@ class ExampleZip2ViewModel @Inject constructor(
     private val getProfileInteractor: GetProfileInteractor
 ) : ViewModel(), GetProfileInteractor.Callback {
 
+    // region Sealed classes declaration
     sealed class State {
         data class ShowProfileInformation(
             val profile: ProfileInformation
@@ -18,59 +19,83 @@ class ExampleZip2ViewModel @Inject constructor(
         data class ShowBusinessSkillsInformation(
             val businessSkills: BusinessSkills
         ) : State()
+        data class IsLoading(
+            val loading: Boolean
+        ) : State()
         object HideProfile : State()
         object HideBusiness : State()
+        object NoInternetConnection : State()
+        object UnknownError : State()
     }
 
-    sealed class StateMessage {
-        object NoInternetConnection : StateMessage()
-        object UnknownError : StateMessage()
-        object UnauthorizedError : StateMessage()
+    sealed class Message {
+        object NoInternetConnection : Message()
+        object UnknownError : Message()
     }
+    // endregion
 
-    val message = MutableLiveData<StateMessage>()
-    val isLoading = MutableLiveData<Boolean>()
+    // region Variables declaration
+    val message = MutableLiveData<Message>()
     val state = MutableLiveData<State>()
+    private var _profile: ProfileInformation? = null
+    private var _businessSkills: BusinessSkills? = null
+    // endregion
 
     // region GetProfileInteractor.Callback implementation
     override fun onProfileFetchedSuccessfully(
         profile: ProfileInformation?,
         businessSkills: BusinessSkills?
     ) {
-        isLoading.value = false
+        _profile = profile
+        _businessSkills = businessSkills
 
-        state.value = if (profile != null) {
-            State.ShowProfileInformation(
-                profile
-            )
-        } else {
-            State.HideProfile
+        state.value = State.IsLoading(false)
+
+        if (profile != null) {
+            state.value = State.ShowProfileInformation(profile)
         }
 
-        state.value = if (businessSkills != null) {
-            State.ShowBusinessSkillsInformation(
-                businessSkills
-            )
-        } else {
-            State.HideBusiness
+        if (businessSkills != null) {
+            state.value = State.ShowBusinessSkillsInformation(businessSkills)
         }
     }
 
     override fun onErrorFetchingProfile() {
-        isLoading.value = false
-        state.value =
-            State.HideProfile
+        state.value = State.IsLoading(false)
+        state.value = State.HideProfile
     }
 
     override fun onErrorFetchingBusinessSkills() {
-        isLoading.value = false
-        state.value =
-            State.HideBusiness
+        state.value = State.IsLoading(false)
+        state.value = State.HideBusiness
     }
+
+    override fun onUnknownError() {
+        state.value = State.IsLoading(false)
+        if (_businessSkills == null && _profile == null) {
+            // If we haven't fetched the user information display the full error state
+            state.value = State.UnknownError
+        } else {
+            // If we have fetched the user information show the error through a Snackbar.
+            message.value = Message.UnknownError
+        }
+    }
+
+    override fun onNoInternetConnection() {
+        state.value = State.IsLoading(false)
+        if (_businessSkills == null && _profile == null) {
+            // If we haven't fetched the user information display the full error state
+            state.value = State.NoInternetConnection
+        } else {
+            // If we have fetched the user information show the error through a Snackbar.
+            message.value = Message.NoInternetConnection
+        }
+    }
+
     // endregion
 
     fun fetchProfile() {
-        isLoading.value = true
+        state.value = State.IsLoading(true)
         getProfileInteractor.execute(this)
     }
 }

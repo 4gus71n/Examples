@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityExample2Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -51,6 +52,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:background="@android:color/white"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:id="@+id/activityExample2SwipeRefreshLayout"
         android:layout_width="match_parent"
@@ -60,17 +62,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:padding="8dp"
-                android:orientation="vertical"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <include layout="@layout/activity_example_2_profile" />
+                <LinearLayout
+                    android:padding="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <include layout="@layout/activity_example_2_business" />
+                    <include layout="@layout/activity_example_2_profile" />
 
-            </LinearLayout>
+                    <include layout="@layout/activity_example_2_business" />
+
+                </LinearLayout>
+
+                <com.kimboo.core.view.SimpleStateDisplay
+                    android:id="@+id/activityExample2StateDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </FrameLayout>
 
         </androidx.core.widget.NestedScrollView>
 
