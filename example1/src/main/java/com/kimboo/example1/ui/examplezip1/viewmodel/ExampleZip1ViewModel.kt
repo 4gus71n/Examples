@@ -10,6 +10,7 @@ class ExampleZip1ViewModel @Inject constructor(
     private val getNewsInteractor: GetNewsInteractor
 ) : ViewModel(), GetNewsInteractor.Callback {
 
+    // region Sealed classes declaration
     sealed class State {
         data class NewsFetched(
             val news: List<NewFeed>
@@ -17,52 +18,80 @@ class ExampleZip1ViewModel @Inject constructor(
         data class RecentlyViewedNewsFetched(
             val news: List<NewFeed>
         ) : State()
-        object Error : State()
+        data class IsLoading(
+            val loading: Boolean
+        ) : State()
+        object UnknownError : State()
+        object NoInternetConnection : State()
+    }
+
+    sealed class Message {
+        object UnknownError : Message()
+        object NoInternetConnection : Message()
     }
 
     data class Pagination(
         val currentPage: Int,
         val totalPages: Int
     )
+    // endregion
 
+    // region Variables declaration
     val pagination = MutableLiveData<Pagination>()
-    val isLoading = MutableLiveData<Boolean>()
     val state = MutableLiveData<State>()
+    val message = MutableLiveData<Message>()
+
+    private val _news = mutableListOf<NewFeed>()
+    private val _recentNews = mutableListOf<NewFeed>()
+    // endregion
 
     // region GetNewsInteractor.Callback implementation
     override fun onNewsSuccessfullyFetched(news: List<NewFeed>, currentPage: Int, totalPages: Int) {
-        isLoading.value = false
+        state.value = State.IsLoading(false)
 
-        state.value =
-            State.NewsFetched(
-                news = news
-            )
+        if (currentPage == 0) {
+            _news.clear()
+        }
+        _news.addAll(news)
 
-        pagination.value =
-            Pagination(
-                currentPage = currentPage,
-                totalPages = totalPages
-            )
+        state.value = State.NewsFetched(_news)
+
+        pagination.value = Pagination(
+            currentPage = currentPage,
+            totalPages = totalPages
+        )
     }
 
     override fun onRecentlyViewedNewsFetched(news: List<NewFeed>) {
-        isLoading.value = false
+        _recentNews.clear()
+        _recentNews.addAll(news)
 
-        state.value =
-            State.RecentlyViewedNewsFetched(
-                news = news
-            )
+        state.value = State.IsLoading(false)
+        state.value = State.RecentlyViewedNewsFetched(_recentNews)
     }
 
     override fun onErrorFetchingNews() {
-        isLoading.value = false
-
-        state.value = State.Error
+        state.value = State.IsLoading(false)
+        if (_recentNews.isEmpty() && _news.isEmpty()) {
+            state.value = State.UnknownError
+        } else {
+            message.value = Message.UnknownError
+        }
     }
+
+    override fun onNoInternetConnection() {
+        state.value = State.IsLoading(false)
+        if (_recentNews.isEmpty() && _news.isEmpty()) {
+            state.value = State.NoInternetConnection
+        } else {
+            message.value = Message.NoInternetConnection
+        }
+    }
+
     // endregion
 
     fun fetchNews(page: Int) {
-        isLoading.value = true
+        state.value = State.IsLoading(true)
         getNewsInteractor.execute(this, page)
     }
 }

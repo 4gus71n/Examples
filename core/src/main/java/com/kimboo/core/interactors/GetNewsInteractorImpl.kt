@@ -5,6 +5,8 @@ import com.kimboo.core.models.NewFeedMetadata
 import com.kimboo.core.repositories.NewsRepository
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.Observables
+import java.net.ConnectException
+import java.net.UnknownHostException
 
 class GetNewsInteractorImpl(
     private val newsRepository: NewsRepository
@@ -29,7 +31,11 @@ class GetNewsInteractorImpl(
                     )
                 },
                 {
-                    callback.onErrorFetchingNews()
+                    if (it is ConnectException || it is UnknownHostException) {
+                        callback.onNoInternetConnection()
+                    } else {
+                        callback.onErrorFetchingNews()
+                    }
                 }
             )
         } else {
@@ -42,7 +48,11 @@ class GetNewsInteractorImpl(
                     )
                 },
                 {
-                    callback.onErrorFetchingNews()
+                    if (it is ConnectException || it is UnknownHostException) {
+                        callback.onNoInternetConnection()
+                    } else {
+                        callback.onErrorFetchingNews()
+                    }
                 }
             )
         }
