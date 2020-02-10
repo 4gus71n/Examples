@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.snackbar.Snackbar
 import com.kimboo.base.utils.PaginatedScrollListener
 import com.kimboo.example1.R
 import com.kimboo.example1.di.component.DaggerExample1ViewInjector
@@ -50,7 +51,7 @@ class ExampleZip1Activity : AppCompatActivity() {
             .get(ExampleZip1ViewModel::class.java)
 
         observeStateChanges()
-        obserLoadingState()
+        observeMessageChanges()
         obserPaginationChanges()
 
         fetchNews()
@@ -88,16 +89,41 @@ class ExampleZip1Activity : AppCompatActivity() {
         })
     }
 
-    private fun obserLoadingState() {
-        viewModelZip.isLoading.observe(this, Observer {
-            activityExample1SwipeRefreshLayout.isRefreshing = it
-            paginatedScrollListener.isLoading = it
+    private fun observeMessageChanges() {
+        viewModelZip.message.observe(this, Observer {
+            when (it) {
+                is ExampleZip1ViewModel.Message.NoInternetConnection -> {
+                    onShowNoInternetConnectionSnackbar()
+                }
+                is ExampleZip1ViewModel.Message.UnknownError -> {
+                    onShowUnknownErrorSnackbar()
+                }
+            }
         })
+    }
+
+    private fun onShowUnknownErrorSnackbar() {
+        Snackbar.make(
+            example1ActivityContainer,
+            getString(R.string.error_unknown_error),
+            Snackbar.LENGTH_LONG
+        ).show()
+    }
+
+    private fun onShowNoInternetConnectionSnackbar() {
+        Snackbar.make(
+            example1ActivityContainer,
+            getString(R.string.error_no_internet_connection),
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
     private fun observeStateChanges() {
         viewModelZip.state.observe(this, Observer {
             when (it) {
+                is ExampleZip1ViewModel.State.IsLoading -> {
+                    onChangeLoadingState(it.loading)
+                }
                 is ExampleZip1ViewModel.State.NewsFetched -> {
                     newsAdapter.news.addAll(it.news)
                     newsAdapter.notifyDataSetChanged()
@@ -107,11 +133,33 @@ class ExampleZip1Activity : AppCompatActivity() {
                     newsAdapter.recentlyViewedNews.addAll(it.news)
                     newsAdapter.notifyDataSetChanged()
                 }
-                is ExampleZip1ViewModel.State.Error -> {
-                    // TODO
+                is ExampleZip1ViewModel.State.NoInternetConnection -> {
+                    onShowNoInternetConnectionStateView()
+                }
+                is ExampleZip1ViewModel.State.UnknownError -> {
+                    onShownUnknownErrorStateView()
                 }
             }
         })
+    }
+
+    private fun onChangeLoadingState(loading: Boolean) {
+        activityExample1SwipeRefreshLayout.isRefreshing = loading
+        paginatedScrollListener.isLoading = loading
+    }
+
+    private fun onShownUnknownErrorStateView() {
+        example1ActivityStateDisplay.show {
+            image(R.drawable.ic_sentiment_very_dissatisfied_black_24dp)
+            title(R.string.error_unknown_error)
+        }
+    }
+
+    private fun onShowNoInternetConnectionStateView() {
+        example1ActivityStateDisplay.show {
+            image(R.drawable.ic_signal_wifi_off_black_24dp)
+            title(R.string.error_no_internet_connection)
+        }
     }
 
     private fun fetchNews(page: Int = 0) {

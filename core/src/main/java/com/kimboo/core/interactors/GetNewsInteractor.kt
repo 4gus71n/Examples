@@ -31,6 +31,11 @@ interface GetNewsInteractor {
          * the paginated news.
          */
         fun onErrorFetchingNews()
+
+        /**
+         * Triggered when we try to hit the endpoints without internet connection.
+         */
+        fun onNoInternetConnection()
     }
 
     /**
